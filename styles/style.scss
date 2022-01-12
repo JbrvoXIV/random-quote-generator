@@ -10,6 +10,40 @@
     align-items: center;
 }
 
+@mixin gridContainer {
+    display: grid;
+    grid-template: 1fr 20% / 1fr 1fr;
+    padding: 10px;
+}
+
+@mixin gridChild($bg, $align:"", $justify:"") {
+    background-color: $bg;
+    display: flex;
+    align-items: unquote($align);
+    justify-content: unquote($justify);
+}
+
+@mixin child-x {
+    @for $i from 1 through 3 {
+        @if $i == 1 {
+            .child-#{$i} {
+                @include gridChild(blue);
+                grid-column: 1 / 3;
+            }
+        }
+        @else if $i == 2 {
+            .child-#{$i} {
+                @include gridChild(yellow, "flex-end", "center")
+            }
+        }
+        @else {
+            .child-#{$i} {
+                @include gridChild(red, "flex-end", "flex-end")
+            }
+        }
+    }
+}
+
 html, body, .wrapper {
     @include fillPage();
 }
@@ -21,12 +55,20 @@ html, body, .wrapper {
         height: 400px;
         width: 800px;
         background-color: cadetblue;
+        
+        #new-quote {
 
-
-        #quote-info {
-            height: 50%;
-            background-color: chartreuse;
+            #new-quote-button {
+                height: 50px;
+                width: 100px;
+                font-size: 1rem;
+            }
         }
     }
 }
 
+.grid-container {
+    @include gridContainer();
+}
+
+@include child-x();
