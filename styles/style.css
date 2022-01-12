@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+:root {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 html, body, .wrapper {
   height: 100%;
   padding: 0;
@@ -22,15 +28,46 @@ html, body, .wrapper {
   background-color: cadetblue;
 }
 
+.wrapper #quote-box #quote-info #text {
+  text-align: center;
+  padding: 10px;
+  font-size: 3rem;
+  font-family: "Bebas Neue", Arial, Helvetica, sans-serif;
+  cursor: default;
+}
+
+.wrapper #quote-box #icons #tweet-quote {
+  display: block;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+.wrapper #quote-box #new-quote {
+  padding: 10px;
+}
+
 .wrapper #quote-box #new-quote #new-quote-button {
   height: 50px;
-  width: 100px;
-  font-size: 1rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  -webkit-box-shadow: 5px 5px 5px black;
+          box-shadow: 5px 5px 5px black;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+  font-size: 2rem;
+  font-family: "Bebas Neue", Arial, Helvetica, sans-serif;
+  cursor: default;
 }
 
 .grid-container {
   display: -ms-grid;
   display: grid;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   -ms-grid-rows: 1fr 20%;
   -ms-grid-columns: 1fr 1fr;
       grid-template: 1fr 20% / 1fr 1fr;

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 @mixin fillPage {
     height: 100%;
     padding: 0;
@@ -10,8 +12,24 @@
     align-items: center;
 }
 
+@mixin buttonStyle {
+    height: 50px;
+    width: max-content;
+    box-shadow: 5px 5px 5px black;
+    cursor: pointer;
+}
+
+@mixin textStyle($fontsize) {
+    text-align: center;
+    padding: 10px;
+    font-size: $fontsize;
+    font-family: "Bebas Neue", Arial, Helvetica, sans-serif;
+    cursor: default;
+}
+
 @mixin gridContainer {
     display: grid;
+    height: fit-content;
     grid-template: 1fr 20% / 1fr 1fr;
     padding: 10px;
 }
@@ -22,6 +40,7 @@
     align-items: unquote($align);
     justify-content: unquote($justify);
 }
+
 
 @mixin child-x {
     @for $i from 1 through 3 {
@@ -44,6 +63,10 @@
     }
 }
 
+:root {
+    box-sizing: border-box;
+}
+
 html, body, .wrapper {
     @include fillPage();
 }
@@ -55,13 +78,27 @@ html, body, .wrapper {
         height: 400px;
         width: 800px;
         background-color: cadetblue;
-        
-        #new-quote {
 
+        #quote-info{
+            #text {
+                @include textStyle(3rem)
+            }
+        }
+
+        #icons {
+             #tweet-quote {
+                display: block;
+                padding: 10px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        #new-quote {
+            padding: 10px;
             #new-quote-button {
-                height: 50px;
-                width: 100px;
-                font-size: 1rem;
+                @include buttonStyle();
+                @include textStyle(2rem);
             }
         }
     }
