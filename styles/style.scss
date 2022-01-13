@@ -19,24 +19,26 @@
     cursor: pointer;
 }
 
-@mixin textStyle($fontsize) {
+@mixin textStyle($fontsize, $fontweight) {
     text-align: center;
     padding: 10px;
     font-size: $fontsize;
+    font-weight: $fontweight;
     font-family: "Bebas Neue", Arial, Helvetica, sans-serif;
     cursor: default;
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
 
 @mixin gridContainer {
     display: grid;
-    height: fit-content;
     grid-template: 1fr 20% / 1fr 1fr;
     padding: 10px;
 }
 
-@mixin gridChild($bg, $align:"", $justify:"") {
+@mixin gridChild($bg, $display:"", $align:"", $justify:"") {
     background-color: $bg;
-    display: flex;
+    display: unquote($display);
     align-items: unquote($align);
     justify-content: unquote($justify);
 }
@@ -52,12 +54,12 @@
         }
         @else if $i == 2 {
             .child-#{$i} {
-                @include gridChild(yellow, "flex-end", "center")
+                @include gridChild(yellow, "flex", "flex-end", "center")
             }
         }
         @else {
             .child-#{$i} {
-                @include gridChild(red, "flex-end", "flex-end")
+                @include gridChild(red, "flex", "flex-end", "flex-end")
             }
         }
     }
@@ -75,13 +77,21 @@ html, body, .wrapper {
     @include centerDiv();
 
     #quote-box {
-        height: 400px;
         width: 800px;
         background-color: cadetblue;
 
         #quote-info{
             #text {
-                @include textStyle(3rem)
+                @include textStyle(3rem, 400)
+            }
+            #author {
+                float: right;
+                padding-right: 10px;
+                @include textStyle(2rem, 200);
+                
+                &::before {
+                    content: "-";
+                }
             }
         }
 
@@ -98,7 +108,7 @@ html, body, .wrapper {
             padding: 10px;
             #new-quote-button {
                 @include buttonStyle();
-                @include textStyle(2rem);
+                @include textStyle(2rem, 300);
             }
         }
     }
