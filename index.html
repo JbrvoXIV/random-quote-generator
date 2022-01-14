@@ -8,7 +8,7 @@
     <script src="./script.js" type="module"></script>
     <title>Random Quote Generator</title>
 </head>
-<body>
+<body onload="changeQuote()">
     <div class="wrapper">
         <div id="quote-box" class="grid-container">
             <div id="quote-info" class="child-1">
@@ -25,7 +25,7 @@
                 </a>
             </div>
             <div id="new-quote" class="child-3">            
-                <button id="new-quote-button" type="submit" onclick="">
+                <button id="new-quote-button" type="submit" onclick="changeQuote()">
                     New Quote
                 </button>                    
             </div>
