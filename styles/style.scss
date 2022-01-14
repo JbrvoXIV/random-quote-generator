@@ -76,10 +76,11 @@ html, body, .wrapper {
 
 .wrapper {
     @include centerDiv();
+    transition: 2s background-color ease;
 
     #quote-box {
         width: 800px;
-        background-color: cadetblue;
+        background-color: rgb(255, 230, 230);
         margin: 10px;
         box-shadow: 5px 5px 5px black;
 

@@ -1,5 +1,5 @@
-{
-    "colors": [
+export default 
+    [
         {
             "light-green": "#6EC83F",
             "complementary": "#993FC8"
@@ -37,4 +37,3 @@
             "complementary": "#08E594"
         }
     ]
-}

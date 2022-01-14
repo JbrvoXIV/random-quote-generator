@@ -6,26 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./styles/style.css">
     <script src="./script.js" type="module"></script>
+    <script src="./quotes.js" type="text/javascript"></script>
+    <script src="./colors.js" type="text/javascript"></script>
+    <link rel="shortcut icon" href="./img/thinkbubble.svg" type="image/x-icon">
     <title>Random Quote Generator</title>
 </head>
-<body onload="changeQuote()">
+<body>
     <div class="wrapper">
         <div id="quote-box" class="grid-container">
             <div id="quote-info" class="child-1">
                 <p id="text">
-                    I don't measure a man's success by how high he climbs but how high he bounces when he hits the bottom
                 </p>
                 <h3 id="author">
-                    George S. Patton
                 </h3>
             </div>
             <div id="icons" class="child-2">
                 <a href="twitter.com/intent/tweet" target="_blank" id="tweet-quote">
-                    <img src="./twittericon.svg" alt="Twitter Icon">
+                    <img src="./img/twittericon.svg" alt="Twitter Icon">
                 </a>
             </div>
             <div id="new-quote" class="child-3">            
-                <button id="new-quote-button" type="submit" onclick="changeQuote()">
+                <button id="new-quote-button" type="submit" onclick="changeQuoteAndColor()">
                     New Quote
                 </button>                    
             </div>
