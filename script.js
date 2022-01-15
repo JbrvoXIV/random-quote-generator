@@ -1,46 +1,36 @@
-import quotes from "./quotes.js";
 import colors from "./colors.js";
 
-const authorArr = Object.keys(quotes);
-const getQuotes = () => {
-    const author = authorArr[Math.floor(Math.random() * (authorArr.length - 1))];
-    const quote = quotes[author];
-    const colorComplementary = colors[Math.floor(Math.random() * (colors.length - 1))].complementary;
-    
-    let colorPrimary = colors.filter(obj => obj.complementary == colorComplementary);
-    colorPrimary = Object.values(colorPrimary[0]);
+let quotesData;
+let randomQuote = '';
+let randomAuthor = '';
 
-    $('#author').animate({ 
-        opacity: 0 
-    }, 500, function () {
-    $(this).animate({
-            opacity: 1,
-            color: colorComplementary
-    }, 500);
-    $('#author').html(author);
-    });
-    
-    $('#text').animate({
-        opacity: 0 
-    }, 500, function () {
-    $(this).animate({
-        opacity: 1,
-        color: colorComplementary
-    }, 500);
-    $('#text').html(quote);
-    });
+async function getQuotes(){
+    const response = await fetch('https://type.fit/api/quotes');
+    const data = await response.json();
+    quotesData = data;
+}
 
-    $(".wrapper").animate({
-        backgroundColor: colorComplementary
-    }, 1000)
+const getQuote = () => {
+    const index = quotesData[Math.floor(Math.random() * quotesData.length - 1)];
+    randomQuote = index.text;
+    randomAuthor = index.author;
+    const {primary, complementary} = colors[Math.floor(Math.random() * colors.length - 1)];
 
-    $("#quote-box").animate({
-        backgroundColor: colorPrimary[0]
-    }, 1000)
+    $('#text, #author').animate({ opacity: 0 }, 500, () => {
+        $('#text, #author').animate({ opacity: 1 }, 500);
+        $('#text').html(randomQuote);
+        $('#author').html(randomAuthor);
+      });
+
+    $('.wrapper').animate({ backgroundColor: primary }, 500);
+    $('#text, #author').animate({ color: primary }, 500);
+    $('#quote-box').animate({ backgroundColor: complementary }, 500);
 }
 
 jQuery(() => {
-    getQuotes();
+    getQuotes().then(() => {
+        getQuote();
+    });
 
-    $("#new-quote-button").on('click', getQuotes);
+    $("#new-quote-button").on('click', getQuote);
 });
