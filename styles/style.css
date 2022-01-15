@@ -20,8 +20,7 @@ html, body, .wrapper {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transition: 2s background-color ease;
-  transition: 2s background-color ease;
+  background-color: darkgray;
 }
 
 .wrapper #quote-box {
@@ -93,6 +92,7 @@ html, body, .wrapper {
           margin-block-start: 0;
   -webkit-margin-after: 0;
           margin-block-end: 0;
+  background-color: lightblue;
 }
 
 .wrapper #quote-box #new-quote #new-quote-button:active {

@@ -76,7 +76,7 @@ html, body, .wrapper {
 
 .wrapper {
     @include centerDiv();
-    transition: 2s background-color ease;
+    background-color: darkgray;
 
     #quote-box {
         width: 800px;
@@ -86,7 +86,7 @@ html, body, .wrapper {
 
         #quote-info{
             #text {
-                @include textStyle(3rem, 400)
+                @include textStyle(3rem, 400);
             }
             #author {
                 float: right;
@@ -113,6 +113,7 @@ html, body, .wrapper {
             #new-quote-button {
                 @include buttonStyle();
                 @include textStyle(2rem, 300);
+                background-color: lightblue;
                 
                 &:active {
                     transform: scale(0.9);
