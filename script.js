@@ -19,17 +19,24 @@ const getQuote = () => {
     $('#text, #author').animate({ opacity: 0 }, 500, () => {
         $('#text, #author').animate({ opacity: 1 }, 500);
         $('#text').html(randomQuote);
-        $('#author').html(randomAuthor);
+        if(randomAuthor == null) {
+            $('#author').html('Unknown');
+        } else {
+            $('#author').html(randomAuthor);
+        }
       });
 
-    $('.wrapper').animate({ backgroundColor: primary }, 500);
+    $('.wrapper').animate({ backgroundColor: primary }, 1500);
     $('#text, #author').animate({ color: primary }, 500);
     $('#quote-box').animate({ backgroundColor: complementary }, 500);
+    $('#copy-icon').animate({ color: primary }, 500);
 }
 
 jQuery(() => {
     getQuotes().then(() => {
         getQuote();
+    }).catch(error => {
+        console.error(error);
     });
 
     $("#new-quote-button").on('click', getQuote);
