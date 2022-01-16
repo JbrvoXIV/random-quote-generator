@@ -1,3 +1,3 @@
 # random-quote-generator
 
-Small project involving Sass and basic JavaScript. Generates quotes from a JSON collection.
+Small project involving SASS and basic JavaScript/jQuery. Generates quotes from a https://type.fit/api/quotes API.
