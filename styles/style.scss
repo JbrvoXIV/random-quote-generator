@@ -22,7 +22,7 @@
 @mixin textStyle($fontsize, $fontweight) {
     text-align: center;
     padding: 10px;
-    font-size: $fontsize;
+    font-size: clamp($fontsize - 1rem, 3vw, $fontsize);
     font-weight: $fontweight;
     font-family: "Bebas Neue", Arial, Helvetica, sans-serif;
     cursor: default;
@@ -97,11 +97,6 @@ html, body, .wrapper {
                     content: "-";
                 }
             }
-        }
-
-        i {
-            width: 50px;
-            height: 50px;
         }
 
         #new-quote {

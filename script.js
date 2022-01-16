@@ -1,8 +1,6 @@
 import colors from "./colors.js";
 
 let quotesData;
-let randomQuote = '';
-let randomAuthor = '';
 
 async function getQuotes(){
     const response = await fetch('https://type.fit/api/quotes');
@@ -11,10 +9,10 @@ async function getQuotes(){
 }
 
 const getQuote = () => {
-    const index = quotesData[Math.floor(Math.random() * quotesData.length - 1)];
-    randomQuote = index.text;
-    randomAuthor = index.author;
-    const {primary, complementary} = colors[Math.floor(Math.random() * colors.length - 1)];
+    const quoteIndex = quotesData[Math.floor(Math.random() * quotesData.length - 1)];
+    const randomQuote = quoteIndex.text;
+    const randomAuthor = quoteIndex.author;
+    const {primary, complementary} = colors[Math.floor(Math.random() * (colors.length - 1))];
 
     $('#text, #author').animate({ opacity: 0 }, 500, () => {
         $('#text, #author').animate({ opacity: 1 }, 500);
